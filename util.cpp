@@ -15,15 +15,24 @@ std::string convToLower(std::string src)
     to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
 {
+	// use find? or iterator? 
+	// check if contains special character, if yes, seperate
+	// if the character less than 2, erase it 
+	set<std::string> results;
+	int startIndex = 0, endIndex = 0;
 
-
-
-
-
-
-
-
-
+	for (unsigned i = 0; i <= rawWords.size(); i++){
+		if (ispunct(rawWords[i]) || isspace(rawWords[i]) || i == rawWords.size()){
+			endIndex = i;
+			string temp;
+			temp.append(rawWords, startIndex, endIndex - startIndex);
+			if (temp.size()>= 2){
+				results.insert(temp);
+			}
+			startIndex = endIndex + 1;
+		}
+	}
+	return results;
 
 }
 
